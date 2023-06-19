@@ -1,6 +1,30 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-doctors=["Иванов Иван Иванович", "Назарова Ольга Александровна","Самойлов Антон Дмитриевич","Тышкевич Лидия Игнатьевна"]
+doctors= {
+    "Иванов Иван Иванович": ["Онколог", 15],
+    "Назарова Ольга Александровна": ["Гематолог", 19],
+    "Самойлов Антон Дмитриевич": ["Врач УЗИ", 12],
+    "Тышкевич Лидия Игнатьевна": ["Онколог", 9]
+}
+
+researches=["Биохимический анализ крови", "Общий анализ крови", "Онкотест PanTum Detect", "Инструментальная диагностика", "Цитологические исследования"]
+
+def home_page(request):
+    return render(request, "home.html")
+def all_researches(request):
+    context = {
+        "researches": researches,
+    }
+    return render(request, "researches.html", context=context)
+
 def all_doctors(request):
-    return render (request, "pantum.html",{"doctors":doctors})
+    context = {
+        "doctors": doctors,
+    }
+    return render(request, "doctors.html", context=context)
+def reviews(request):
+    return render(request, "reviews.html")
+def contacts(request):
+    return render(request, "contacts.html")
+

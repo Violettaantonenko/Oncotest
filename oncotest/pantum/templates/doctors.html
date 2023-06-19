@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}doctors{% endblock %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Фамилия, имя, отчество</th>
+      <th scope="col">Специальность</th>
+      <th scope="col">Стаж работы</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for name, info in doctors.items %}
+    <tr>
+      <td>{{ name }}</td>
+      {% for inf in info %}
+        <td>{{ inf }}</td>
+      {% endfor %}
+    </tr>
+        {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock %}

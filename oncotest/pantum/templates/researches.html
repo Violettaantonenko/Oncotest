@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}researches{% endblock %}
+
+{% block content %}
+
+
+{% for research in researches%}
+    <h1>{{research}}</h1>
+{% endfor %}
+
+
+
+{% endblock %}
