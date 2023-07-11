@@ -7,9 +7,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Фамилия</th>
-      <th scope="col">Имя</th>
-      <th scope="col">Отчество</th>
+      <th scope="col">Фото</th>
+      <th scope="col">Фамилия, имя, отчество </th>
       <th scope="col">Специальность</th>
       <th scope="col">Стаж работы, лет</th>
       <th scope="col">Возраст</th>
@@ -18,9 +17,8 @@
   <tbody>
     {% for doctor in doctors %}
        <tr>
-          <td>{{ doctor.surname }}</td>
-          <td>{{ doctor.name }}</td>
-          <td>{{ doctor.fathername }}</td>
+          <td>{% if  doctor.photo %} <img style="max-height:100px" style="max-width:100px" src="{{ doctor.photo.url }}"/> {% endif %} </td>
+          <td>{{ doctor.surname }} {{ doctor.name }} {{ doctor.fathername }}</td>
           <td>{{ doctor.get_specialization_display}}</td>
           <td>{{ doctor.experience }}</td>
           <td>{{ doctor.age }}</td>

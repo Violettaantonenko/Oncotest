@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFEFD5;">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">Pantum</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="{% url 'home' %}">Главная</a>
-        <a class="nav-link" href="{% url 'research' %}">Исследования</a>
-        <a class="nav-link" href="{% url 'doctors' %}">Врачи</a>
-        <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
-        <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
-      </div>
-
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Pantum</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="{% url 'home' %}">Главная</a>
+                <a class="nav-link" href="{% url 'research' %}">Исследования</a>
+                <a class="nav-link" href="{% url 'doctors' %}">Врачи</a>
+                <a class="nav-link" href="{% url 'contacts' %}">Контакты</a>
+                <a class="nav-link" href="{% url 'reviews' %}">Отзывы</a>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFEFD5;">
+            <a class="btn btn-dark me-md-2" href="#">Онлайн-запись</a>
+            <a class="btn btn-dark me-md-2" href="#">Личный кабинет</a>
+        </nav>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFEFD5;">
-      <a class="btn btn-dark me-md-2" href="#">Онлайн-запись</a>
-      <a class="btn btn-dark me-md-2" href="#">Личный кабинет</a>
-    </nav>
-  </div>
 </nav>
