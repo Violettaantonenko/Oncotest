@@ -27,12 +27,12 @@ def all_reviews(request):
     if request.method == 'POST':
         form = AddReviewForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            print(form)
     else:
         form = AddReviewForm()
 
     # context = {
+    #     "form": form
     #     "reviews": Reviews.objects.all()
     # }
     return render(request, "reviews.html", {'form': form})
@@ -40,3 +40,4 @@ def all_reviews(request):
 
 def contacts(request):
     return render(request, "contacts.html")
+

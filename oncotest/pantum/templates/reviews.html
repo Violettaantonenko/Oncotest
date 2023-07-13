@@ -6,44 +6,27 @@
 <h1> {{title}} </h1>
 <form action="{% url 'reviews' %}" method="post">
     {% csrf_token %}
-    <div class="row mb-3">
-        <label for="inputName" class="col-sm-1 col-form-label">Ваше имя:</label>
-        <div class="col-sm-3">
-            <input type="name" class="form-control" id="inputName" placeholder="Введите Ваше имя...">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputRating" class="col-sm-1 col-form-label">Ваша оценка:</label>
-        <div class="col-sm-3">
-            <input type="rating" class="form-control" id="inputRating" placeholder="От 1 до 5...">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="inputDescription" class="col-sm-1 col-form-label">Ваш отзыв:</label>
-        <div class="col-sm-3">
-            <input type="description" class="form-control" id="inputDescription" placeholder="Отзыв...">
-        </div>
-    </div>
+{{form}}
+<!--    <div class="row mb-3">-->
+<!--        <label for="inputName" class="col-sm-1 col-form-label">Ваше имя:</label>-->
+<!--        <div class="col-sm-3">-->
+<!--            <input type="name" class="form-control" id="inputName" placeholder="Введите Ваше имя...">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row mb-3">-->
+<!--        <label for="inputRating" class="col-sm-1 col-form-label">Ваша оценка:</label>-->
+<!--        <div class="col-sm-3">-->
+<!--            <input type="rating" class="form-control" id="inputRating" placeholder="От 1 до 5...">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="row mb-3">-->
+<!--        <label for="inputDescription" class="col-sm-1 col-form-label">Ваш отзыв:</label>-->
+<!--        <div class="col-sm-3">-->
+<!--            <input type="description" class="form-control" id="inputDescription" placeholder="Отзыв...">-->
+<!--        </div>-->
+<!--    </div>-->
     <button type="submit" class="btn btn-dark">Добавить</button>
 </form>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Имя</th>
-      <th scope="col">Рейтинг </th>
-      <th scope="col">Отзыв</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for review in reviews %}
-       <tr>
-          <td>{{ review.name}}</td>
-          <td>{{ review.rating }}</td>
-          <td>{{ review.description}}</td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
 {% endblock %}
