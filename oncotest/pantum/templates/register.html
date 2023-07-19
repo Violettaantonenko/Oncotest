@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}reviews{% endblock %}
+{% block title %}register{% endblock %}
 
 {% block content %}
 {% load crispy_forms_tags %}
@@ -9,9 +9,9 @@
 
 <div class="container mt-3" style="width: 95%; font-size: 14px">
     <div class="card p-3 border-dark text-center" style="font-size: 18px;">
-        Оставьте свой отзыв
+        Регистрация нового пользователя
     </div>
-<form action="{% url 'reviews' %}" method="post">
+<form action="{% url 'register' %}" method="post">
     {{form|crispy}}
     {% csrf_token %}
 

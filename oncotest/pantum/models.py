@@ -18,9 +18,7 @@ RESEARCH = [
 ]
 
 
-# Добавить класс для авторизации и аутентификации
-
-
+# Добавить класс для авторизации и аутентификацbb
 class Account(models.Model):
     surname = models.CharField(max_length=100, verbose_name='Фамилия')
     name = models.CharField(max_length=100, verbose_name='Имя')
@@ -99,7 +97,7 @@ class Research(models.Model):
 class Reviews(models.Model):
     clients = models.ForeignKey('Clients', on_delete=models.CASCADE, null=True, verbose_name='Клиент')
     rating = models.PositiveIntegerField(null=True, verbose_name='Рейтинг')
-    description = models.CharField(max_length=255, verbose_name='Описание')
+    description = models.CharField(max_length=100, verbose_name='Описание')
 
     def __str__(self):
         return str(self.clients)
