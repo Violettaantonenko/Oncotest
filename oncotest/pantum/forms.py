@@ -1,8 +1,21 @@
 from django import forms
 from .models import *
 from django.core.validators import ValidationError
-from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
 from django.contrib.auth.models import User
+
+
+class UserProfileForm(UserChangeForm):
+    surname = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    fathername = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    age = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    phone = forms.IntegerField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    city= forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control py-8'}))
+    class Meta:
+        model = Clients
+        fields = ['surname', 'name', 'fathername', 'age', 'phone', 'email', 'city']
 
 
 class AddReviewForm(forms.ModelForm):
@@ -31,15 +44,17 @@ class AddReviewForm(forms.ModelForm):
 
 
 class RegisterUserForm(UserCreationForm):
-    username=forms.CharField(label='Ваш логин', widget=forms.TextInput(attrs={'placeholder': 'Логин..'}))
-    email=forms.EmailField(label='Ваш email', widget=forms.TextInput(attrs={'placeholder': 'Введите Ваш email..'}))
-    password1=forms.CharField(label='Пароль', widget=forms.TextInput(attrs={'placeholder': 'Введите пароль..'}))
-    password2 = forms.CharField(label='Повторите пароль', widget=forms.TextInput(attrs={'placeholder': 'Повторите пароль..'}))
+    username = forms.CharField(label='Ваш логин', widget=forms.TextInput(attrs={'placeholder': 'Логин..'}))
+    email = forms.EmailField(label='Ваш email', widget=forms.TextInput(attrs={'placeholder': 'Введите Ваш email..'}))
+    password1 = forms.CharField(label='Пароль', widget=forms.TextInput(attrs={'placeholder': 'Введите пароль..'}))
+    password2 = forms.CharField(label='Повторите пароль',
+                                widget=forms.TextInput(attrs={'placeholder': 'Повторите пароль..'}))
+
     class Meta:
         model = User
-        fields = ['username','email', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
+
 
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'placeholder': 'Введите логин..'}))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'placeholder': 'Введите пароль..'}))
-

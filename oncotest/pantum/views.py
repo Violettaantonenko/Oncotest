@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout,login
-from .models import Doctors, Research
-from .forms import AddReviewForm, RegisterUserForm, LoginUserForm
+from .models import Doctors, Research, Reviews
+from .forms import AddReviewForm, RegisterUserForm, LoginUserForm, UserProfileForm
 from .utils import *
 
 
@@ -33,26 +33,30 @@ def all_doctors(request):
     }
     return render(request, "doctors.html", context=context)
 
+class Profile(DataMixin,CreateView):
+    form_class = UserProfileForm
+    template_name = 'profile.html'
+    success_url = reverse_lazy('profile')
 
 class AddReviews(DataMixin, CreateView):
     form_class = AddReviewForm
     template_name = 'reviews.html'
     success_url = reverse_lazy('home')
 
-
-# def all_reviews(request):
-#     if request.method == 'POST':
-#         form = AddReviewForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('home')
-#     else:
-#         form = AddReviewForm()
-#     return render(request, "reviews.html", {'form': form})
-
+    # def all_reviews(request):
+    #     if request.method == 'POST':
+    #         form = AddReviewForm(request.POST)
+    #         if form.is_valid():
+    #             form.save()
+    #             return redirect('home')
+    #     else:
+    #         form = AddReviewForm()
+    #     return render(request, "reviews.html", {'form': form})
+    #
 
 def contacts(request):
     return render(request, "contacts.html")
+
 
 
 # класс регистрации пользователя

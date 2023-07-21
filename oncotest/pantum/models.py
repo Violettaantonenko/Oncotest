@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 SPECIALIZATION = [
     ('Гематолог', 'Врач-гематолог'),
@@ -17,8 +18,12 @@ RESEARCH = [
     ('Цитологические исследования', 'Цитологические исследования'),
 ]
 
+# class User(models.Model):
+#     username = models.CharField(max_length=100, verbose_name='Имя пользователя', default="username")
+#     password = models.CharField(max_length=100, verbose_name='Пароль',default="password")
 
-# Добавить класс для авторизации и аутентификацbb
+
+# Добавить класс для авторизации и аутентификации
 class Account(models.Model):
     surname = models.CharField(max_length=100, verbose_name='Фамилия')
     name = models.CharField(max_length=100, verbose_name='Имя')
