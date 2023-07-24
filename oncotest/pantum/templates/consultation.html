@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}consultation{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<h1> {{title}} </h1>
+
+<div class="container mt-3" style="width: 95%; font-size: 14px">
+    <div class="card p-3 border-dark text-center" style="font-size: 18px;">
+        Запись на прием к врачу, проведение исследования
+    </div>
+<form action="{% url 'consultation' %}" method="post">
+    {{form|crispy}}
+    {% csrf_token %}
+
+<button type="submit" class="btn btn-dark">Отправить</button>
+    <div class="container mt-3" style="width: 100%; font-size: 14px">
+        <div class="card p-3 border-dark text-center" style="font-size: 19px;">
+        Наш специалист свяжется с Вами в ближайшее время
+        </div>
+    </div>
+</form>
+</div>
+
+
+{% endblock %}

@@ -5,8 +5,8 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout,login
-from .models import Doctors, Research, Reviews
-from .forms import AddReviewForm, RegisterUserForm, LoginUserForm, UserProfileForm
+from .models import Doctors, Research, Reviews, Consultation
+from .forms import AddReviewForm, RegisterUserForm, LoginUserForm, UserProfileForm,ConsultationForm
 from .utils import *
 
 
@@ -33,16 +33,30 @@ def all_doctors(request):
     }
     return render(request, "doctors.html", context=context)
 
+# Личный кабинет
 class Profile(DataMixin,CreateView):
     form_class = UserProfileForm
     template_name = 'profile.html'
     success_url = reverse_lazy('profile')
 
+# Запись на консультацию
+class AddConsultation(DataMixin, CreateView):
+    form_class = ConsultationForm
+    template_name = 'consultation.html'
+    success_url = reverse_lazy ('home')
+
+
+
+#Добавление отзыва
 class AddReviews(DataMixin, CreateView):
     form_class = AddReviewForm
     template_name = 'reviews.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('reviews')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reviews']=Reviews.objects.all()
+        return context
     # def all_reviews(request):
     #     if request.method == 'POST':
     #         form = AddReviewForm(request.POST)
@@ -56,8 +70,6 @@ class AddReviews(DataMixin, CreateView):
 
 def contacts(request):
     return render(request, "contacts.html")
-
-
 
 # класс регистрации пользователя
 class RegisterUser(DataMixin, CreateView):

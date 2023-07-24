@@ -35,10 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pantum',
+    'pantum.apps.PantumConfig',
     'django_extensions',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
+    'oncotest_api.apps.OncotestApiConfig'
 ]
 
 MIDDLEWARE = [

@@ -17,7 +17,6 @@ RESEARCH = [
     ('Инструментальная диагностика', 'Инструментальная диагностика'),
     ('Цитологические исследования', 'Цитологические исследования'),
 ]
-
 # class User(models.Model):
 #     username = models.CharField(max_length=100, verbose_name='Имя пользователя', default="username")
 #     password = models.CharField(max_length=100, verbose_name='Пароль',default="password")
@@ -63,7 +62,7 @@ class Clients(Account):
 
 class DoctorsSpecialization(models.Model):
     name = models.CharField(max_length=100, choices=SPECIALIZATION, verbose_name='Специализация')
-    doctor = models.ForeignKey("Doctors", on_delete=models.DO_NOTHING, verbose_name='Врач')  # продумать еще раз
+    doctor = models.ForeignKey("Doctors", on_delete=models.DO_NOTHING, verbose_name='Врач')
 
     def __str__(self):
         return str(self.name)
@@ -73,13 +72,14 @@ class DoctorsSpecialization(models.Model):
         verbose_name_plural = 'Специализация'
 
 
+
 class Consultation(models.Model):
     clients = models.ForeignKey('Clients', on_delete=models.CASCADE, null=True, verbose_name='Клиент')
-    doctors = models.ForeignKey('Doctors', on_delete=models.CASCADE, null=True, verbose_name='Врач')
-    date = models.DateTimeField(auto_now=False, verbose_name='Дата')
-
+    service = models.CharField(max_length=100, null=True, verbose_name='Услуги')
+    date = models.CharField(max_length=30, verbose_name='Дата')
+    phone = models.CharField(max_length=40, verbose_name='Телефон', default="")
     def __str__(self):
-        return str(self.doctors)
+        return str(self.service)
 
     class Meta:
         verbose_name = 'Консультации'
