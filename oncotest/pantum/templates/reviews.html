@@ -17,7 +17,7 @@
   <tbody>
     {% for rev in reviews %}
       <tr>
-        <td>{{ rev.clients_id }}</td>
+        <td>{{ rev.clients.name }}</td>
         <td>{{ rev.rating }}</td>
         <td>{{ rev.description }}</td>
       </tr>

@@ -8,5 +8,7 @@ crispy-bootstrap5==0.7
 djangorestframework==3.14.0
 Markdown==3.4.3
 django-filter==23.2
+django-debug-toolbar==4.1.0
+
 
 

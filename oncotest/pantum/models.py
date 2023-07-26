@@ -23,7 +23,7 @@ RESEARCH = [
 
 
 # Добавить класс для авторизации и аутентификации
-class Account(models.Model):
+class Account(User):
     surname = models.CharField(max_length=100, verbose_name='Фамилия')
     name = models.CharField(max_length=100, verbose_name='Имя')
     fathername = models.CharField(max_length=100, verbose_name='Отчество')
@@ -49,7 +49,7 @@ class Doctors(Account):
 # Create your models here.
 class Clients(Account):
     phone = models.CharField(max_length=40, verbose_name='Телефон')
-    email = models.CharField(max_length=100, verbose_name='Email', null=True, unique=True)
+
     city = models.CharField(max_length=100, verbose_name='Город')
 
     def __str__(self):

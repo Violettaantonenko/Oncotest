@@ -1,15 +1,18 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from pantum.models import Clients, Doctors,Consultation, Research,Reviews
-from .serializers import ClientsSerializer,DoctorsSerializer,ConsultationSerializer, ResearchSerializer,ReviewsSerializer
+from pantum.models import Clients, Doctors, Consultation, Research, Reviews
+from .serializers import ClientsSerializer, DoctorsSerializer, ConsultationSerializer, ResearchSerializer, \
+    ReviewsSerializer
 from rest_framework import status
 from django.http import Http404
 from rest_framework import generics
+
+
 # Create your views here.
 
 
-#возможность читать, изменять, удалять запись
+# возможность читать, изменять, удалять запись
 class ClientsListAPIViewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Clients.objects.all()
     serializer_class = ClientsSerializer
@@ -31,23 +34,27 @@ class DoctorsListAPIViewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Doctors.objects.all()
     serializer_class = DoctorsSerializer
 
+
 class ConsultationListAPIView(generics.ListCreateAPIView):
     queryset = Consultation.objects.all()
     serializer_class = ConsultationSerializer
+
 
 class ConsultationListAPIViewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Consultation.objects.all()
     serializer_class = ConsultationSerializer
 
+
 class ResearchAPIView(APIView):
     def get(self, request, format=None):
         place = Research.objects.all()
-        serializer_data = ResearchSerializer(place, many=True).data  #many=true - набор запросов содержит несколько элементов (списков элементов)
+        serializer_data = ResearchSerializer(place,
+                                             many=True).data  # many=true - набор запросов содержит несколько элементов (списков элементов)
         return Response(serializer_data)
+
 
 class ReviewsAPIView(APIView):
     def get(self, request, format=None):
         place = Reviews.objects.all()
         serializer_data = ReviewsSerializer(place, many=True).data
         return Response(serializer_data)
-

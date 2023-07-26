@@ -20,13 +20,6 @@ class Researches(DataMixin, ListView):
     context_object_name = "research"
 
 
-# def all_researches(request):
-#     context = {
-#         "research": Research.objects.all(),
-#     }
-#     return render(request, "researches.html", context=context)
-
-
 def all_doctors(request):
     context = {
         "doctors": Doctors.objects.all(),
@@ -57,16 +50,7 @@ class AddReviews(DataMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['reviews']=Reviews.objects.all()
         return context
-    # def all_reviews(request):
-    #     if request.method == 'POST':
-    #         form = AddReviewForm(request.POST)
-    #         if form.is_valid():
-    #             form.save()
-    #             return redirect('home')
-    #     else:
-    #         form = AddReviewForm()
-    #     return render(request, "reviews.html", {'form': form})
-    #
+  
 
 def contacts(request):
     return render(request, "contacts.html")
