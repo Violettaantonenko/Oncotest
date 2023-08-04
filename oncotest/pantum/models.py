@@ -23,7 +23,7 @@ RESEARCH = [
 
 
 # Добавить класс для авторизации и аутентификации
-class Account(User):
+class Account(models.Model):
     surname = models.CharField(max_length=100, verbose_name='Фамилия')
     name = models.CharField(max_length=100, verbose_name='Имя')
     fathername = models.CharField(max_length=100, verbose_name='Отчество')
@@ -45,11 +45,9 @@ class Doctors(Account):
         verbose_name = 'Врачи'
         verbose_name_plural = 'Врачи'
 
-
-# Create your models here.
 class Clients(Account):
     phone = models.CharField(max_length=40, verbose_name='Телефон')
-
+    email = models.CharField(max_length=100, verbose_name='Email', null=True)
     city = models.CharField(max_length=100, verbose_name='Город')
 
     def __str__(self):
@@ -110,3 +108,7 @@ class Reviews(models.Model):
     class Meta:
         verbose_name = 'Отзывы'
         verbose_name_plural = 'Отзывы'
+
+class ConsultationQueue(models.Model):
+    value = models.PositiveIntegerField(verbose_name='значение')
+
