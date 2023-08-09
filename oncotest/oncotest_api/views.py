@@ -29,7 +29,9 @@ class ClientsListAPIViewDetail(generics.RetrieveUpdateDestroyAPIView):
     #         return Response(serializer.data, status=status.HTTP_201_CREATED)
     #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+class DoctorsAPIView(APIView):
+    queryset = Doctors.objects.all
+    serializer_class = DoctorsSerializer
 class DoctorsListAPIViewDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Doctors.objects.all()
     serializer_class = DoctorsSerializer
