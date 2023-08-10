@@ -21,7 +21,7 @@
  7. Create superuser: py manage.py createsuperuser
  8. Download my project to github: https://github.com/Violettaantonenko/Oncotest.git
  9. Create templates, models, forms, urls.
- 10. Make migrattions
+ 10. Make migrations
  11. Database: PostgreSQL
  
  Описание REST API:
